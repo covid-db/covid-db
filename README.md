@@ -26,3 +26,26 @@ analyze and fight the COVID-19 virus!
 
 This doesn't have to be limited to the United States.  The same strategy can
 work for anywhere in the world where low-level data is available.
+
+## Future Work
+
+The exiting categories of `confirmed`, `deaths`, and `recovered` have
+significant uncertainties associated with them.  A better next step would be
+to get more granular data something like the following numbers of cases:
+
+* Tests administered
+* Positive tests (confirmed cases)
+* Cases admitted to hospitals
+* Cases admitted to ICU
+* Deaths
+* Recoveries
+
+Getting this data would give us a much more accurate picture of what is
+happening, but this will take a lot of effort.  The first step is to establish
+a clearly defined format that is maximally usable and make it easy to add data
+in this format.
+
+Of course the ideal situation would be to have individual case data
+(anonymized) with things like gender, age, and more accurate timestamps of
+disease progression. We have the tools to enable this.  It's mostly a matter
+of being organized and coordinated.
