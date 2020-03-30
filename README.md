@@ -27,6 +27,19 @@ analyze and fight the COVID-19 virus!
 This doesn't have to be limited to the United States.  The same strategy can
 work for anywhere in the world where low-level data is available.
 
+## Data Currently Available
+
+### Johns Hopkins Data
+
+* [places.csv](tables/places.csv)
+* [reports.csv](tables/places.csv)
+
+### US State Data
+
+Data is currently being scraped for the following states:
+
+* [Utah](tables/us-states/utah.csv)
+
 ## Future Work
 
 The exiting categories of `confirmed`, `deaths`, and `recovered` have
