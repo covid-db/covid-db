@@ -32,7 +32,7 @@ work for anywhere in the world where low-level data is available.
 ### Johns Hopkins Data
 
 * [places.csv](tables/places.csv)
-* [reports.csv](tables/places.csv)
+* [reports.csv](tables/reports.csv)
 
 ### US State Data
 
