@@ -38,6 +38,7 @@ work for anywhere in the world where low-level data is available.
 
 Data is currently being scraped for the following states:
 
+* [New York](tables/us-states/newyork.csv)
 * [Utah](tables/us-states/utah.csv)
 
 ## Future Work
