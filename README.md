@@ -41,6 +41,12 @@ Data is currently being scraped for the following states:
 * [New York](tables/us-states/newyork.csv)
 * [Utah](tables/us-states/utah.csv)
 
+## Scrapers
+
+Scrapers for this data are available here:
+
+https://github.com/covid-db/covid-scrapers
+
 ## Future Work
 
 The exiting categories of `confirmed`, `deaths`, and `recovered` have
