@@ -12,6 +12,8 @@ jobs:
     name: Build scrapers
     runs-on: ubuntu-latest
     steps:
+    - name: Print working directory
+      run: pwd
     - name: Install Nix
       uses: cachix/install-nix-action@v7
 
@@ -23,14 +25,14 @@ jobs:
 
     - name: Build scrapers
       working-directory: covid-scrapers
-      run: nix-build -A haskell.covid-scrape
+      run: 'nix-build -A haskell.covid-scrape --option substituters "https://zeus-ci.s3.amazonaws.com/ https://cache.nixos.org/" --option trusted-public-keys "ci.mightybyte.net-1:LXywRTa8NaNw7x32JJOncRMxFk2I36K6Tf6ac8VRnho= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="'
 
     - uses: actions/checkout@v2
 
     - name: Run scrapers
       working-directory: covid-db/tables
       run: |
-        covid-scrapers/result/bin/covid-scrape all
+        ~/covid-scrapers/result/bin/covid-scrape all
         git checkout -b scrape-`date +%Y-%m-%d`
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
