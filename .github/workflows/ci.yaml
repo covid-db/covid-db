@@ -17,6 +17,7 @@ jobs:
         pwd
         echo $GITHUB_WORKSPACE
         ls -al
+
     - name: Install Nix
       uses: cachix/install-nix-action@v7
 
@@ -26,14 +27,28 @@ jobs:
         repository: covid-db/covid-scrapers
         path: covid-scrapers
 
+    - name: Print working directory
+      run: |
+        pwd
+        echo $GITHUB_WORKSPACE
+        ls -al
+
     - name: Build scrapers
       working-directory: covid-scrapers
       run: 'nix-build -A haskell.covid-scrape --option substituters "https://zeus-ci.s3.amazonaws.com/ https://cache.nixos.org/" --option trusted-public-keys "ci.mightybyte.net-1:LXywRTa8NaNw7x32JJOncRMxFk2I36K6Tf6ac8VRnho= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="'
 
     - uses: actions/checkout@v2
+      with:
+        path: covid-db
+
+    - name: Print working directory
+      run: |
+        pwd
+        echo $GITHUB_WORKSPACE
+        ls -al
 
     - name: Run scrapers
-      working-directory: $GITHUB_WORKSPACE/tables
+      working-directory: $GITHUB_WORKSPACE/covid-db/tables
       run: |
         $GITHUB_WORKSPACE/covid-scrapers/result/bin/covid-scrape all
         git checkout -b scrape-`date +%Y-%m-%d`
