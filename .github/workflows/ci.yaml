@@ -1,0 +1,42 @@
+name: Scrape data
+
+on:
+  push:
+    branches:
+      - ci*
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  build:
+    name: Build scrapers
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Nix
+      uses: cachix/install-nix-action@v7
+
+    - name: Checkout scrapers repo
+      uses: actions/checkout@v2
+      with:
+        repository: covid-db/covid-scrapers
+        path: covid-scrapers
+
+    - name: Build scrapers
+      working-directory: covid-scrapers
+      run: nix-build -a haskell.covid-scrape
+
+    - uses: actions/checkout@v2
+
+    - name: Run scrapers
+      working-directory: covid-db/tables
+      run: |
+        covid-scrapers/result/bin/covid-scrape all
+        git checkout -b scrape-`date +%Y-%m-%d`
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am "Automated scraper commit"
+    - name: Push scraped data
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        git push
