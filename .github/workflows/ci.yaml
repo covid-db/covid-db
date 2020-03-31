@@ -66,5 +66,5 @@ jobs:
     - name: Push scraped data
       uses: ad-m/github-push-action@master
       with:
-        directory: covid-db
+        directory: $GITHUB_WORKSPACE/covid-db
         github_token: ${{ secrets.GITHUB_TOKEN }}
