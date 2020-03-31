@@ -48,8 +48,15 @@ jobs:
         ls -al
 
     - name: Run scrapers
-      working-directory: $GITHUB_WORKSPACE/covid-db/tables
+      working-directory: covid-db/tables
       run: |
+        pwd
+        ls -al
+        echo $GITHUB_WORKSPACE
+        ls -al $GITHUB_WORKSPACE
+        ls -al $GITHUB_WORKSPACE/covid-scrapers
+        ls -al $GITHUB_WORKSPACE/covid-scrapers/result
+        ls -al $GITHUB_WORKSPACE/covid-scrapers/result/bin
         $GITHUB_WORKSPACE/covid-scrapers/result/bin/covid-scrape all
         git checkout -b scrape-`date +%Y-%m-%d`
         git config --local user.email "action@github.com"
