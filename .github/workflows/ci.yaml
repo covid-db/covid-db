@@ -23,7 +23,7 @@ jobs:
 
     - name: Build scrapers
       working-directory: covid-scrapers
-      run: nix-build -a haskell.covid-scrape
+      run: nix-build -A haskell.covid-scrape
 
     - uses: actions/checkout@v2
 
