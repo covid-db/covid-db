@@ -64,6 +64,7 @@ jobs:
         git add .
         git commit -am "Automated scraper commit"
     - name: Push scraped data
+      working-directory: covid-db
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
